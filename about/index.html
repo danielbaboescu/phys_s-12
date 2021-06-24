@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>PHYS S-12: Intro to Digital Fabrication </title>
+  <title>Phys_S-12: Introduction to Digital Fabrication</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
-  <link href="../style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="./style.css" rel="stylesheet">
 </head>
 <body>
-  <nav class ="navbar container-fluid sticky-top">
-    <h2 class = "element"> <a href="../index.html" class="logo">Home</a></h2> 
-    <div class="flex nav">
-      <h4 class = "element nav-element"> <a href="../final/index.html" class="logo">Final Project</a> </h4>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="../index.html">Home</a>
     </div>
-  </nav>
-<div class="container-fluid">
-  <h3>About Me </h3> <br>
-  <div class="row"> 
-      <div class="col-md-12">
-        <p>Hello and welcome to this site. </p>
-        <p>My name is Daniel Baboescu, creator of this website in which you are currently on. I am a highschool student from California. Some my hobbies include exercising like running or biking and drawing. </p> 
-      </div>
-
-
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="./about/index.html">About</a></li>
+        <li><a href="../final/index.html">Final Project</a></li>
+      </ul>
+    </div>
   </div>
+</nav>
 
- 
-  
-  
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+  <h3 class="margin">Who Am I?</h3>
+    <img src="onboat.jpeg" class="img-responsive img-circle margin" style="display:inline" alt="Me on a boat" width="350" height="350">
+  <h3>Daniel Baboescu</h3>
 </div>
+
+<!-- Second Container (Grid) -->
+<div class="container-fluid bg-3 text-center">    
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="siblings.png" class="img-responsive img-square margin" style="display:inline" alt="Me and my sister" width="350" height="350">
+    </div>
+    <div class="col-sm-8"> 
+      <p><br>Hello and welcome to this site. My name is Daniel Baboescu, creator of this website in which you are currently on. I am a highschool student from California. Some of my hobbies include exercising like running or biking and drawing.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
+</footer>
 
 </body>
 </html>
