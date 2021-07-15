@@ -1,49 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>PHYS S-12: Intro to Digital Fabrication </title>
+  <title>Phys_S-12: Introduction to Digital Fabrication</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link href="../style.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
-<div class="container-fluid">
-  <h3>Week 1: Introduction </h3> <br> 
-  <div class="row">
-    
-      <div class="col-md-4">
-        <p> Here is an image: </p>
-
-        <img src="./sew.png" class="img-responsive margin" style="width:100%" alt="Sew">
-
-        <p> And here is a <a href='../index.html'>link</a>. </p>
-      </div >
-     
-      <div class="col-md-4">
-        <p> Here is a video embedded with the iframe tag: </p> 
-   
-        <iframe style="width:100%; height:300px" src="https://www.youtube.com/embed/z-6idke_hVY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-
-      <div class="col-md-4">
-        <p> Here is a column with an mp4 video. </p> 
-   
-        <video controls>
-          <source width="320" height="240" src="demo.mp4" type="video/mp4">
-        </video>
-      </div>
-
-
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="../index.html">Home</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="../about/index.html">About</a></li>
+        <li><a href="../final/index.html">Final Project</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Weeks<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="about-us">
+              <li><a href="../01_intro/index.html">1: Introduction & Documentation </a></li>
+              <li><a href="../02_2D/index.html">2: 2D Design & Cutting</a></li>
+              <li><a href="../03_electronics_tools/index.html">3: Electronics and Tools</a></li>
+              <li><a href="../04_rprototyping/index.html">4: Rapid Prototyping</a></li>
+              <li><a href="../05_programmable-electronics/index.html">5: Programmable Electronics</a></li>
+              <li><a href="../06_3D/index.html">6: 3D Design & Printing</a></li>
+              <li><a href="../07_einput/index.html">7: Electronic Input Devices</a></li>
+              <li><a href="../08_eoutput/index.html">8: Electronic Output Devices</a></li>
+              <li><a href="../09_network/index.html">9: Networking / IoT</a></li>
+              <li><a href="../10_mbuilding/index.html">10: Machine building</a></li>
+              <li><a href="../11_cprgmming/index.html">11: Computer Programming</a></li>
+              <li><a href="../12_prep/index.html">12: Wildcard / Project Prep</a></li>
+            </ul>
+        </li>
+      </ul>
+      </ul>
+    </div>
   </div>
+</nav>
 
- 
-  
-  
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+  <h3 class="margin">WEEK 7: Electronic Input Devices<br></h3>
 </div>
+
+<!-- Second Container (Grid) -->
+<div class="container-fluid bg-3 text-center">    
+  <div class="col-sm-12">
+    <p><br>During this assignment, there were a couple problems that were quite troublesome being that I couldn't find packet 2 and I got a broken wire stuck in my microcontroller. After a couple hours of trying to debug the problem to no success. I decided to use Tinkercad to test out the input devices.<br></p>
+    <p><br>The first input device I tested out was a basic phototransistor circuit, where I would drag a button to increase or decrease the values of the sensor and print out that value. The change in values as I decreased the resistance was mainly linear from 1023 (dark) to 552 (light). When the phototransistor had more resistance it was prone to staying dark with less resistance more bright.<br></p>
+    <img src="phototransistor_tinkercad_basic.png" class="img-responsive img-square margin" style="display:inline" alt="Screenshot of a basic phototransistor circuit" width="600" height="600">
+  </div>
+</div>
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+  <pre><code class="langauge-arduino">
+  void setup()
+  {
+    Serial.begin(9600);
+    pinMode(A0, INPUT); // Input pin through A0
+  }
+
+  void loop()
+  {
+    int level = analogRead(A0); // display the phototransistor results
+    Serial.println(level);
+    delay(100);
+  }
+  </code></pre>
+</div>
+<div class="col-sm-2"></div>
+<div class="container-fluid bg-3 text-center">
+  <div class="col-sm-12">
+    <p><br>Next I tried out the Phototransistor circuit from class and tested out different voltage levels, current and phototransistor values to see how they each affected each other.<br></p>
+    <img src="phototransistor_tinkercad_class.png" class="img-responsive img-square margin" style="display:inline" alt="Screenshot of a phototransistor circuit that was done in class" width="600" height="600">
+    <p><br>I found out that the voltage on the multimeter reflected the amount of current that was stimulating through the circuit, that could only be changed depending on the resistance displayed by the phototransistor.</br></p>
+  </div> 
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
+</footer>
 
 </body>
 </html>
