@@ -14,6 +14,11 @@ def form():
 		if not request.form.get("name") or not request.frm.get("purpose"):
 			return apology()
 
+		session["name_id"] = rows[0]["id"]
+
+	else:
+		return render_template("organizer_form.html")
+
 
 
 
