@@ -11,7 +11,7 @@ def form():
 	if request.method == "POST":
 
 		# Ensure user has typed in name
-		if not request.form.get("name") or not request.frm.get("purpose"):
+		if not request.form.get("name") or not request.form.get("purpose"):
 			return apology()
 
 		session["name_id"] = rows[0]["id"]
