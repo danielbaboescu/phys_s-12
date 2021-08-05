@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Phys_S-12: Introduction to Digital Fabrication</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="../style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="../index.html">Home</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../final/index.html">Final Project</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Weeks<span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="about-us">
+                  <li><a href="../01_intro/index.html">1: Introduction & Documentation </a></li>
+                  <li><a href="../02_2D/index.html">2: 2D Design & Cutting</a></li>
+                  <li><a href="../03_electronics_tools/index.html">3: Electronics and Tools</a></li>
+                  <li><a href="../04_rprototyping/index.html">4: Rapid Prototyping</a></li>
+                  <li><a href="../05_programmable-electronics/index.html">5: Programmable Electronics</a></li>
+                  <li><a href="../06_3D/index.html">6: 3D Design & Printing</a></li>
+                  <li><a href="../07_einput/index.html">7: Electronic Input Devices</a></li>
+                  <li><a href="../08_eoutput/index.html">8: Electronic Output Devices</a></li>
+                  <li><a href="../09_network/index.html">9: Networking / IoT</a></li>
+                  <li><a href="../10_mbuilding/index.html">10: Machine building</a></li>
+                  <li><a href="../11_cprgmming/index.html">11: Computer Programming</a></li>
+                  <li><a href="../12_prep/index.html">12: Wildcard / Project Prep</a></li>
+                </ul>
+            </li>
+          </ul>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- First Container -->
+    <div class="container-fluid bg-1 text-center">
+      <h3 class="margin">{% block title %}{% endblock %}<br></h3>
+    </div>
+
+    <!-- Second Container (Grid) -->
+    <div class="container-fluid bg-3 text-center">
+      <h3 class="margin"><br>{% block contenttitle %}{% endblock %}</h3>
+      {% block form %}
+      {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="container-fluid bg-4 text-center">
+      <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
+    </footer>
+
+  </body>
+</html>
