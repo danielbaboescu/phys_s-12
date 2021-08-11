@@ -100,6 +100,106 @@
       <img src="flaskcode.png" class="img-responsive img-square margin" style="display:inline" alt="Flask code" width="800" height="800">
       <p>Another problem, I came across was after modeling the organizer, I found out that I overestimated how big the 3d print would be and I minimized my table.</p>
       <img src="tooltable2.png" class="img-responsive img-square margin" style="display:inline" alt="Second tool table created" width="600" height="600">
+      <p><br>To connect this to the website, I utilized Firebase and had an int inputed to represent the cart number.<br></p>
+      <pre><code class="language-arduino">
+        #include <AccelStepper.h>
+        #include <Stepper.h>
+        #include <WiFi.h>
+        #include <FirebaseESP32.h>
+
+        #define FIREBASE_HOST ""
+        #define FIREBASE_AUTH ""
+        #define WIFI_SSID ""
+        #define WIFI_PASSWORD ""
+
+        // Declare the used pins
+        int dirA = 12;
+        int dirB = 13;
+        int pwmA = 3;
+        int pwmB = 11;
+
+        // Declare a Stepper motor with 200 steps
+        Stepper stepper1(200, dirA, dirB);
+
+        // Define FirebaseESP32 data object
+        FirebaseData firebaseData;
+
+        int fireInt = 0;
+        const int MIN_CARTS = 1;
+        const int MAX_CARTS = 4;
+        int cart;
+        int i;
+
+        void setup() {
+
+          Serial.begin(115200);
+          delay(1000);
+          WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+
+          Serial.print("Connecting to ");
+          Serial.print(WIFI_SSID);
+          while (WiFi.status() != WL_CONNNECTED) {
+            Serial.print(".");
+            delay(500);
+          }
+
+          Serial.println();
+          Serial.print("Connected to ");
+          Serial.println(WIFI_SSID);
+          Serial.print("Connected to ");
+          Serial.println(WiFi.localIP());
+          Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+          Firebase.reconnectWiFi(true);
+          Firebase.set(firebaseData, "/LED_STATUS", "WAITING");
+
+          Firebase.set(firebaseData, "/LED_STATUS", "WAITING");
+
+          // When used Digitally PWM pins require declaration
+          pinMode(pwmA, OUTPUT);
+          pinMode(pwmB, OUTPUT);
+
+          // Set PWM pins as always HIGH
+          digitalWrite(pwmA, HIGH);
+          digitalWrite(pwmB, HIGH);
+
+          // Set stepper motor speed
+          stepper1.setSpeed(60);
+          
+        }
+
+        void rotate90DegressFwd(){
+          stepper1.step(895);
+        }
+        void rotate90DegreesBck(){
+          stepper1.step(-895);
+        }
+        void rotateFwdInSteps(int steps) {
+          while (steps > 0){
+            rotate90DegreesFwd();
+            steps--;
+          }
+        }
+
+        void rotateBckInSteps(int steps) {
+          while (steps > 0){
+            rotate90DegreesBck();
+            steps--;
+          }
+        }
+        void loop() {
+
+          Firebase.get(firebaseData, "/LED_STATUS");
+          fireInt = firebaseData.intData();
+          Serial.println(fireInt);
+          if(fireInt > 1){
+            rotateFwdInSteps(fireInt - 1);
+            fireInt = 0;
+          }
+          buttonPush = firebaseData.intData();
+          
+        }
+      </code></pre>
+      <p><br>I used an if statement to tell how many rotations there are. If there is a change in cart number by 1 the rotation would have 1 rotation of 90 degrees.<br></p>
       <p><br><strong>Future Possibilities</strong><br><br>There are a lot of practical applications of this design. But I do feel there could be extra add-ons where the form returns a receipt to the user who is either borrowing or returning a tool. This could displaying the history of what they have borrowed or returned. I could also make it so that the user will have to access the website after logging in via post.</p>
       <p><br><strong>Conclusion</strong><br><br>Overall, despite not completely finishing my intended design, which unerves me, I find that I achieved quite a bit in this fast paced course. Normally, I would not be able to latch onto any sort of programming language, but after taking this course, I do believe it could be quite an asset for the future.</p>
     </div>
